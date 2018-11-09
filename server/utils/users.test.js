@@ -27,7 +27,7 @@ describe('Users', () => {
         var user = {
             id: 123,
             name: 'Tester',
-            room: 'Test room'
+            room: 'test room'
         };
         var response = users.addUser(user.id, user.name, user.room);
 
@@ -76,5 +76,12 @@ describe('Users', () => {
         var userList = users.getUserList('React Course');
 
         expect(userList).toEqual(['Jen']);
+    });
+
+    it('should return a list of unique rooms', () => {
+        var roomList = users.getRoomList();
+
+        expect(roomList.length).toBe(2);
+        expect(roomList).toEqual(['Node Course', 'React Course']);
     });
 });

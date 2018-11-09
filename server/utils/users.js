@@ -3,7 +3,9 @@ class Users {
         this.users = [];
     }
     addUser (id, name, room) {
-        var user = {id, name, room};
+        var user = {id, name, 
+            room: room.toLowerCase()
+        };
         this.users.push(user);
         return user;
     }
@@ -22,6 +24,12 @@ class Users {
         var namesArray = users.map((user) => user.name);
 
         return namesArray;
+    }
+    getRoomList(){
+        return this.users.map((user) => user.room).filter((elem, pos, arr) => arr.indexOf(elem) == pos);
+    }
+    userNameExists(name) {
+        return this.users.find((user) => user.name === name);
     }
 }
 
